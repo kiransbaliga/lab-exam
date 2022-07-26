@@ -27,7 +27,7 @@ class _BookTrainState extends State<BookTrain> {
             hint: "name",
             onchanged: (text) {
               setState(() {
-                tid = int.parse(text);
+                cname = text;
               });
             },
           ),
@@ -45,9 +45,19 @@ class _BookTrainState extends State<BookTrain> {
             data: "seats",
             hint: "no of seats",
             onchanged: (text) {
-              setState(() {
-                seat = int.parse(text);
-              });
+              for (int i = 0; i < 4; i++) {
+                if (train[i].tno == tid) {
+                  if (int.parse(text) < train[i].seatsleft) {
+                    setState(() {
+                      seat = int.parse(text);
+                    });
+                  } else {
+                    setState(() {
+                      price = 10000000;
+                    });
+                  }
+                }
+              }
             },
           ),
           formqstn(
@@ -59,7 +69,16 @@ class _BookTrainState extends State<BookTrain> {
               });
             },
           ),
-          Text("Total price: ${seat * price}")
+          Text("Total price: ${seat * price}"),
+          TextButton(
+              onPressed: () {
+                for (int i = 0; i < 4; i++) {
+                  if (train[i].tno == tid) {
+                    train[i].seatsleft -= seat;
+                  }
+                }
+              },
+              child: Text("Proceed")),
         ],
       ),
     );
@@ -88,7 +107,7 @@ class formqstn extends StatelessWidget {
           Text(
             data,
             style: TextStyle(
-              color: Color(0xff14D19D),
+              color: Colors.red,
               fontSize: 18,
               fontWeight: FontWeight.w600,
             ),
