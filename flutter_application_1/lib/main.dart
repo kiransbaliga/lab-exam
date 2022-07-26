@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Screens/viewtrains.dart';
 
+import 'Screens/booktrain.dart';
 import 'classes/classes.dart';
 
 void main() {
@@ -53,10 +55,21 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               subtitle: const Text('View Train Details',
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-              onTap: () {},
+              onTap: () {
+                setState(() {
+                  // Navigator.push(context, ViewTrain());
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ViewTrain(),
+                    ),
+                  );
+                });
+              },
             ),
             ListTile(
-              leading: const Icon(Icons.book, color: Colors.black, size: 40),
+              leading: const Icon(Icons.monetization_on,
+                  color: Colors.black, size: 40),
               title: const Text('Book Train',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               subtitle: const Text('Book A Train',
@@ -64,7 +77,17 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: () {},
             ),
             FloatingActionButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  // Navigator.push(context, ViewTrain());
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BookTrain(),
+                    ),
+                  );
+                });
+              },
               child: const Icon(Icons.add),
             ),
           ],
