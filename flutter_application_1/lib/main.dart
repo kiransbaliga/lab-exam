@@ -74,10 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               subtitle: const Text('Book A Train',
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-              onTap: () {},
-            ),
-            FloatingActionButton(
-              onPressed: () {
+              onTap: () {
                 setState(() {
                   // Navigator.push(context, ViewTrain());
                   Navigator.push(
@@ -88,6 +85,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 });
               },
+            ),
+            FloatingActionButton(
+              onPressed: () {},
               child: const Icon(Icons.add),
             ),
           ],
